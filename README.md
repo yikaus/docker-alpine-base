@@ -8,6 +8,12 @@ A bit of difference is instead of push docker image directly to docker hub , I c
 
 It could be more clear that docker build still happened in docker hub site and see [yikaus/alpine-base]
 
+You can check version by 
+- docker pull yikaus/alpine-base
+- docker run --rm yikaus/alpine-base  cat /etc/issue
+- docker pull yikaus/alpine-base:2.7
+- docker run --rm yikaus/alpine-base:2.7  cat /etc/issue
+
 Why circleci ? because it seems the only build system support running docker in script.
 
 - Travis :    Default CI machine kernel 2.6 does not support docker , it 's docker infrustructure don't support sudo
