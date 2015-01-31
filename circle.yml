@@ -5,7 +5,7 @@ machine:
 dependencies:
   override:
     - git config user.email $uemail && git config user.name $uname
-    - git rm ./rootfs.tar.xz && git push
+    - git rm ./rootfs.tar.xz && git commit -am 'delete rootfs' && git push
     - sudo ./mkalpine.sh -s -r v2.7
 
 test:
