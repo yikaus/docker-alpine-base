@@ -1,0 +1,19 @@
+machine:
+  services:
+    - docker
+
+dependencies:
+  override:
+    - sudo ./mkalpine.sh -s -r v2.7 -m http://dl-4.alpinelinux.org/alpine
+    - docker build -t yikaus/tmptest .
+
+test:
+  override:
+    - docker run yikaus/tmptest /sbin/apk --update search -v nginx
+    - git config user.email $uemail && git config user.name $uname
+    - IFS=$'\n' ; for cid in `git log --pretty=format:%h --grep='ci skip'` ; do git reset --hard $cid ; done
+    - git push origin HEAD --force
+    - git add ./rootfs.tar.xz && git commit -am '[ci skip]' && git push
+    - curl --data "build=true" -X POST $dockertrigger
+    
+

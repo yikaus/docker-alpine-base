@@ -1,10 +1,7 @@
 #!/bin/sh
 
 # https://github.com/docker/docker/blob/master/contrib/mkimage-alpine.sh.
-#[ $(id -u) -eq 0 ] || {
-#  printf >&2 '%s requires root\n' "$0"
-#  exit 1
-#}
+
 
 usage() {
   printf >&2 '%s: [-r release] [-m mirror] [-s]\n' "$0"
@@ -42,7 +39,7 @@ pack() {
   id=$(tar --numeric-owner -C $ROOTFS -c . | docker import - alpine:$REL)
 
   docker tag $id alpine:latest
-  docker run -i  alpine printf 'alpine:%s with id=%s created!\n' $REL $id
+  docker run -i -t  alpine printf 'alpine:%s with id=%s created!\n' $REL $id
 }
 
 save() {
