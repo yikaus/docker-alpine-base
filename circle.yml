@@ -17,6 +17,7 @@ test:
 
 deployment:
   master:
+    branch: master
     commands:
      - curl --data "build=true" -X POST $dockertrigger
     
