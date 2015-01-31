@@ -12,7 +12,7 @@ test:
   override:
     - docker build -t yikaus/tmptest .
     - docker run yikaus/tmptest /sbin/apk --update search -v nginx
-    - git add ./rootfs.tar.xz && git commit -am '[ci skip]' && git push
+    - git add ./rootfs.tar.xz && git commit -am '[ci skip]' && git push origin master --force
 
 deployment:
   master:
