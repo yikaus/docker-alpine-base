@@ -1,0 +1,23 @@
+machine:
+  services:
+    - docker
+
+dependencies:
+  override:
+    - git config user.email $uemail && git config user.name $uname
+    - git filter-branch -f --tree-filter 'rm -rf rootfs.tar.xz' HEAD && git push origin master --force
+    - sudo ./mkalpine.sh -s -r v3.0
+
+test:
+  override:
+    - docker build -t yikaus/tmptest .
+    - docker run yikaus/tmptest /sbin/apk --update search -v nginx
+    - git add ./rootfs.tar.xz && git commit -am '[ci skip]' && git push origin master --force
+
+deployment:
+  master:
+    branch: master
+    commands:
+     - curl --data "build=true" -X POST $dockertrigger
+    
+
