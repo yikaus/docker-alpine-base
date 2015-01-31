@@ -6,7 +6,7 @@ dependencies:
   override:
     - git config user.email $uemail && git config user.name $uname
     - git filter-branch -f --tree-filter 'rm -rf rootfs.tar.xz' HEAD && git push origin master --force
-    - sudo ./mkalpine.sh -s -r v3.0
+    - sudo ./mkalpine.sh -s -r v3.1
 
 test:
   override:
