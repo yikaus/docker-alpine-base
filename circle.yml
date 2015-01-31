@@ -14,6 +14,10 @@ test:
     - IFS=$'\n' ; for cid in `git log --pretty=format:%h --grep='ci skip'` ; do git reset --hard $cid ; done
     - git push origin HEAD --force
     - git add ./rootfs.tar.xz && git commit -am '[ci skip]' && git push
-    - curl --data "build=true" -X POST $dockertrigger
+
+deployment:
+  master:
+    commands:
+     - curl --data "build=true" -X POST $dockertrigger
     
 
