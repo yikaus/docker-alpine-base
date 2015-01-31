@@ -10,11 +10,11 @@ It could be more clear that docker build still happened in docker hub site and s
 
 Why circleci ? because it seems the only build system support running docker in script.
 
-Travis :    Default CI machine kernel 2.6 does not support docker , it 's docker infrustructure don't support sudo
+- Travis :    Default CI machine kernel 2.6 does not support docker , it 's docker infrustructure don't support sudo
 
-Drone.io:   Dosen't support docker privilege  mode .
+- Drone.io:   Dosen't support docker privilege  mode .
 
-Shippable:  Docker in docker not support yet.
+- Shippable:  Docker in docker not support yet.
 
 
 [docker-alpine]: https://github.com/gliderlabs/docker-alpine 
