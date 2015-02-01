@@ -1,8 +1,0 @@
-language: python
-
-before_script:
-  - sudo curl https://get.docker.io/builds/Linux/x86_64/docker-latest -o /usr/local/bin/docker
-  - sudo chmod +x /usr/local/bin/docker
-  - sudo docker -d --iptables=false -H unix:///var/run/docker.sock
-
-script: "sudo ./mkalpine.sh -s -r v2.7 -m http://dl-4.alpinelinux.org/alpine"
